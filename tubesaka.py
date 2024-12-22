@@ -39,14 +39,14 @@ def quick_sort(arr):
 def quick_sort_iterative(arr):
     if len(arr) <= 1:
         return arr
-    
+
     stack = [(0, len(arr) - 1)]
     while stack:
         start, end = stack.pop()
         pivot = arr[(start + end) // 2]
         left = start
         right = end
-        
+
         while left <= right:
             while arr[left] < pivot:
                 left += 1
@@ -56,12 +56,12 @@ def quick_sort_iterative(arr):
                 arr[left], arr[right] = arr[right], arr[left]
                 left += 1
                 right -= 1
-        
+
         if start < right:
             stack.append((start, right))
         if left < end:
             stack.append((left, end))
-    
+
     return arr
 
 # Menghitung waktu eksekusi
@@ -71,7 +71,7 @@ def measure_time(sort_function, data):
     return time.time() - start_time
 
 # Data untuk pengujian
-people = ['Ahmad', 'uffi', 'Lestari', 'makruf', 'rifqi', 'taufiqurrahma', 'salman', 'gilang', 'satria', 'mahrus', 'software', 'engginering']
+people = ['taufiqurrahma', 'TAUFIQURRAHMAN', 'ahmadUFFI', '2412432123', 'UFFI82732', 'RIFQI2312', 'ahmadRIFQI13214', "][(@)_!)@#*0]"]
 
 # Menyimpan hasil
 results = []
@@ -79,19 +79,19 @@ results = []
 for person in people:
     # Generate data acak berdasarkan panjang nama
     data = [ord(char) for char in person]  # Menggunakan nilai ASCII dari karakter nama
-    
+
     # Ukur waktu untuk Bubble Sort (Iteratif)
     bubble_iter_time = measure_time(bubble_sort_iterative, data.copy())
-    
+
     # Ukur waktu untuk Bubble Sort (Rekursif)
     bubble_recur_time = measure_time(bubble_sort_recursive, data.copy())
-    
+
     # Ukur waktu untuk Quick Sort (Rekursif)
     quick_recur_time = measure_time(quick_sort, data.copy())
-    
+
     # Ukur waktu untuk Quick Sort (Iteratif)
     quick_iter_time = measure_time(quick_sort_iterative, data.copy())
-    
+
     results.append({
         'Person': person,
         'Bubble Sort Iterative Time (s)': bubble_iter_time,
@@ -113,7 +113,7 @@ plt.plot(df['Person'], df['Bubble Sort Recursive Time (s)'], marker='o', label='
 plt.plot(df['Person'], df['Quick Sort Iterative Time (s)'], marker='o', label='Quick Sort (Iteratif)', color='blue')
 plt.plot(df['Person'], df['Quick Sort Recursive Time (s)'], marker='o', label='Quick Sort (Rekursif)', color='green')
 plt.title('Performance Comparison: Bubble Sort vs Quick Sort')
-plt.xlabel('Input (Person)')
+plt.xlabel('Input')
 plt.ylabel('Execution Time (seconds)')
 plt.legend()
 plt.grid()
